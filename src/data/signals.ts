@@ -1,0 +1,147 @@
+import amazonAvatar from '../assets/avatar-amazon.png'
+import type { Signal, SignalSegment } from './types'
+
+const roleChange = (from: string, to: string, company: string): SignalSegment[] => [
+  { text: ' changed role from ', style: 'plain' },
+  { text: from, style: 'plain' },
+  { text: ' to ', style: 'plain' },
+  { text: to, style: 'plain' },
+  { text: ' at ', style: 'plain' },
+  { text: company, style: 'plain' },
+]
+
+const websiteView = (pages: number, seconds: number): SignalSegment[] => [
+  { text: ' viewed ', style: 'plain' },
+  { text: `${pages} pages`, style: 'highlight' },
+  { text: ` of your website for ${seconds} sec`, style: 'plain' },
+]
+
+/**
+ * The first five rows reproduce the mockup. The rest exist so the list scrolls
+ * and the unread counter (12) can be worked down to an empty list.
+ */
+export const signals: Signal[] = [
+  {
+    id: 'sig-1',
+    avatarSrc: amazonAvatar,
+    avatarName: 'Robert Smith',
+    headline: [{ text: 'Robert Smith', style: 'strong' }, ...roleChange('SDR', 'Senior SDR', 'WeRoad')],
+    kind: 'role-change',
+    inSequence: true,
+    date: '2025-04-02',
+    unread: true,
+  },
+  {
+    id: 'sig-2',
+    avatarSrc: amazonAvatar,
+    avatarName: 'Robert Smith',
+    headline: [{ text: 'Robert Smith', style: 'strong' }, ...roleChange('SDR', 'Senior SDR', 'WeRoad')],
+    kind: 'company-change',
+    inSequence: true,
+    date: '2025-04-02',
+    unread: true,
+  },
+  {
+    id: 'sig-3',
+    avatarSrc: amazonAvatar,
+    avatarName: 'Robert Smith',
+    headline: [{ text: 'Robert Smith', style: 'strong' }, ...roleChange('SDR', 'Senior SDR', 'WeRoad')],
+    kind: 'role-change',
+    inSequence: false,
+    date: '2025-04-02',
+    unread: true,
+  },
+  {
+    id: 'sig-4',
+    avatarSrc: amazonAvatar,
+    avatarName: 'Amazon',
+    headline: [{ text: 'Amazon', style: 'strong' }, ...websiteView(2, 65)],
+    kind: 'website-view',
+    inSequence: false,
+    date: '2025-04-02',
+    unread: true,
+  },
+  {
+    id: 'sig-5',
+    avatarSrc: amazonAvatar,
+    avatarName: 'Amazon',
+    headline: [{ text: 'Amazon', style: 'strong' }, ...websiteView(2, 65)],
+    kind: 'website-view',
+    inSequence: false,
+    date: '2025-04-02',
+    unread: true,
+  },
+  {
+    id: 'sig-6',
+    avatarSrc: null,
+    avatarName: 'Giulia Fontana',
+    headline: [
+      { text: 'Giulia Fontana', style: 'strong' },
+      ...roleChange('Account Executive', 'Senior AE', 'Satispay'),
+    ],
+    kind: 'role-change',
+    inSequence: true,
+    date: '2025-04-01',
+    unread: true,
+  },
+  {
+    id: 'sig-7',
+    avatarSrc: null,
+    avatarName: 'Marco Bianchi',
+    headline: [{ text: 'Marco Bianchi', style: 'strong' }, ...roleChange('SDR Manager', 'Head of Sales', 'Scalapay')],
+    kind: 'company-change',
+    inSequence: false,
+    date: '2025-04-01',
+    unread: true,
+  },
+  {
+    id: 'sig-8',
+    avatarSrc: null,
+    avatarName: 'Nexi',
+    headline: [{ text: 'Nexi', style: 'strong' }, ...websiteView(5, 128)],
+    kind: 'website-view',
+    inSequence: true,
+    date: '2025-03-31',
+    unread: true,
+  },
+  {
+    id: 'sig-9',
+    avatarSrc: null,
+    avatarName: 'Elena Rossi',
+    headline: [{ text: 'Elena Rossi', style: 'strong' }, ...roleChange('BDR', 'Account Executive', 'Docebo')],
+    kind: 'role-change',
+    inSequence: false,
+    date: '2025-03-31',
+    unread: true,
+  },
+  {
+    id: 'sig-10',
+    avatarSrc: null,
+    avatarName: 'Luca Ferrari',
+    headline: [{ text: 'Luca Ferrari', style: 'strong' }, ...roleChange('Sales Lead', 'VP Sales', 'Casavo')],
+    kind: 'company-change',
+    inSequence: false,
+    date: '2025-03-30',
+    unread: true,
+  },
+  {
+    id: 'sig-11',
+    avatarSrc: null,
+    avatarName: 'Bending Spoons',
+    headline: [{ text: 'Bending Spoons', style: 'strong' }, ...websiteView(3, 94)],
+    kind: 'website-view',
+    inSequence: true,
+    date: '2025-03-30',
+    unread: true,
+  },
+  {
+    id: 'sig-12',
+    avatarSrc: null,
+    avatarName: 'Sofia Greco',
+    headline: [{ text: 'Sofia Greco', style: 'strong' }, ...roleChange('SDR', 'Senior SDR', 'Cortilia')],
+    kind: 'role-change',
+    inSequence: false,
+    date: '2025-03-29',
+    unread: true,
+  },
+]
