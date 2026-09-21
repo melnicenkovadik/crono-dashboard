@@ -2,6 +2,8 @@
 
 A single-screen sales dashboard built from the Figma design of the Crono test task.
 
+**Live:** https://crono-dashboard-eight.vercel.app
+
 **Stack:** Vite · React 19 · TypeScript (strict) · Tailwind CSS 4. No UI library — the one interactive
 piece, the Action menu, is the native Popover API plus a little keyboard handling.
 
