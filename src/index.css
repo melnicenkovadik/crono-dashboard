@@ -1,0 +1,134 @@
+@import 'tailwindcss';
+
+@import '@fontsource/poppins/latin-400.css';
+@import '@fontsource/poppins/latin-500.css';
+@import '@fontsource/poppins/latin-600.css';
+@import '@fontsource/poppins/latin-700.css';
+
+/* Design tokens keep the names used by the Figma export, so a value in the
+   mockup can be traced to a utility class and back. */
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand */
+  --color-crono: #1ebab2;
+  --color-crono-dark: #0a9b94;
+  --color-crono-light: #e9f8f8;
+  --color-crono-hover: #ceeded;
+  --color-logo: #07c8c0;
+
+  /* Neutrals */
+  --color-dark: #010e27;
+  --color-tooltip: #151618;
+  --color-gray-1: #7a8395;
+  --color-gray-2: #afb5bf;
+  --color-gray-4: #e6e9f2;
+  --color-gray-6: #eaf1fb;
+  --color-gray-7: #f5f7f9;
+  --color-gray-hover-1: #3e485b;
+  --color-gray-hover-5: #d5e0f0;
+
+  /* Accents */
+  --color-blue: #3b58db;
+  --color-blue-green: #3b85e8;
+  --color-green: #1a9d6e;
+  --color-pink: #e769cb;
+  --color-purple: #8846dc;
+  --color-red: #ed4c5e;
+  --color-yellow: #e2ad13;
+  --color-secondary-blue: #4e9aff;
+  --color-secondary-yellow: #f9bb06;
+  --color-secondary-dark-yellow: #c69812;
+
+  /* Accent surfaces */
+  --color-blue-green-light: #eaf3fb;
+  --color-pink-light: #fde5f8;
+  --color-purple-light: #f2eaff;
+  --color-yellow-light: #fef3d2;
+  --color-red-light: #ffe9e9;
+  --color-green-light: #e8f5d9;
+  --color-sky-light: #e1f2ff;
+
+  /* Illustration fills that the export leaves untokenised */
+  --color-icon-purple: #995aff;
+  --color-icon-pink: #f376d8;
+  --color-avatar-amazon: #232f3f;
+
+  /* Text styles, one per Figma text token */
+  --text-h1: 24px;
+  --text-h1--line-height: 30px;
+  --text-h1--font-weight: 700;
+
+  --text-h5: 14px;
+  --text-h5--line-height: 22px;
+  --text-h5--font-weight: 600;
+
+  --text-h6: 12px;
+  --text-h6--line-height: 16px;
+  --text-h6--font-weight: 600;
+
+  --text-s3: 14px;
+  --text-s3--line-height: 18px;
+  --text-s3--font-weight: 500;
+
+  --text-b2: 14px;
+  --text-b2--line-height: 24px;
+  --text-b2--font-weight: 400;
+
+  --text-b3: 12px;
+  --text-b3--line-height: 16px;
+  --text-b3--font-weight: 500;
+
+  --text-b5: 11px;
+  --text-b5--line-height: 14px;
+  --text-b5--font-weight: 500;
+
+  --text-desc: 10px;
+  --text-desc--line-height: 12px;
+  --text-desc--font-weight: 500;
+
+  /* Text styles the export draws without a token */
+  --text-lead: 14px;
+  --text-lead--line-height: 20px;
+  --text-lead--font-weight: 400;
+
+  --text-display: 36px;
+  --text-display--line-height: 44px;
+  --text-display--font-weight: 500;
+
+  --text-metric: 24px;
+  --text-metric--line-height: 30px;
+  --text-metric--font-weight: 500;
+
+  --text-kpi: 16px;
+  --text-kpi--line-height: 24px;
+  --text-kpi--font-weight: 500;
+
+  --text-tile: 14px;
+  --text-tile--line-height: 16px;
+  --text-tile--font-weight: 500;
+
+  --radius-card: 16px;
+  --radius-tile: 12.21px;
+  --radius-pill: 34px;
+
+  /* Column widths of the 1440px canvas */
+  --spacing-sidebar: 192px;
+  --spacing-sidebar-rail: 56px;
+  --spacing-aside: 408px;
+}
+
+/* Breakpoint for short desktop windows: below it the page scrolls as a whole. */
+@custom-variant short (@media (min-width: 1280px) and (height < 748px));
+
+@layer base {
+  body {
+    @apply bg-gray-7 text-dark font-sans antialiased;
+  }
+
+  /* The mockup has no focus styles; this keeps keyboard use visible without
+     showing a ring on mouse clicks. */
+  :focus-visible {
+    @apply outline-crono-dark outline-2 outline-offset-2;
+  }
+}
