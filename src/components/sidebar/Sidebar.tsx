@@ -16,7 +16,7 @@ import {
 } from '../icons'
 import { Skeleton } from '../ui/Skeleton'
 import { NavItem, type NavEntry } from './NavItem'
-import { ProfileCard, ProfileCardSkeleton } from './ProfileCard'
+import { ProfileCard, ProfileCardError, ProfileCardSkeleton } from './ProfileCard'
 import { TrialBanner } from './TrialBanner'
 
 // Permanent navigation labels: interface copy, not something the API answers with.
@@ -45,6 +45,7 @@ type SidebarProps = {
 
 export const Sidebar = ({ workspace, collapsed, onToggle }: SidebarProps) => {
   const data = workspace.status === 'ready' ? workspace.data : null
+  const failed = workspace.status === 'error'
 
   return (
     <aside
@@ -94,22 +95,24 @@ export const Sidebar = ({ workspace, collapsed, onToggle }: SidebarProps) => {
             </ul>
           </nav>
 
-          {!collapsed &&
-            (data ? (
-              <TrialBanner daysLeft={data.trial.daysLeft} />
-            ) : (
-              <Skeleton className="h-16 w-44 shrink-0 rounded-lg" />
-            ))}
+          {/* Nothing to advertise when the workspace call failed, so the banner stays out. */}
+          {!collapsed && !failed && (
+            <>
+              {data ? (
+                <TrialBanner daysLeft={data.trial.daysLeft} />
+              ) : (
+                <Skeleton className="h-16 w-44 shrink-0 rounded-lg" />
+              )}
+            </>
+          )}
         </div>
       </div>
 
       <div className="flex flex-col gap-2 pb-3">
         <hr className="border-gray-4 border-t" />
-        {data ? (
-          <ProfileCard name={data.profile.name} role={data.profile.role} collapsed={collapsed} />
-        ) : (
-          <ProfileCardSkeleton collapsed={collapsed} />
-        )}
+        {data && <ProfileCard name={data.profile.name} role={data.profile.role} collapsed={collapsed} />}
+        {workspace.status === 'loading' && <ProfileCardSkeleton collapsed={collapsed} />}
+        {workspace.status === 'error' && <ProfileCardError collapsed={collapsed} onRetry={workspace.retry} />}
       </div>
     </aside>
   )

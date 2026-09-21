@@ -28,6 +28,27 @@ export const ProfileCard = ({ name, role, collapsed }: ProfileCardProps) => (
   </div>
 )
 
+type ProfileCardErrorProps = { collapsed: boolean; onRetry: () => void }
+
+/** A failed workspace call must not leave the sidebar pulsing forever. */
+export const ProfileCardError = ({ collapsed, onRetry }: ProfileCardErrorProps) => (
+  <div className={cx('flex items-center gap-2 py-1', collapsed ? 'justify-center px-3' : 'px-3')}>
+    <Portrait />
+    {!collapsed && (
+      <div className="min-w-0 flex-1">
+        <p className="text-b3 text-gray-1">Profile unavailable</p>
+        <button
+          type="button"
+          onClick={onRetry}
+          className="text-b3 text-crono-dark hover:text-crono cursor-pointer underline-offset-2 hover:underline"
+        >
+          Try again
+        </button>
+      </div>
+    )}
+  </div>
+)
+
 export const ProfileCardSkeleton = ({ collapsed }: { collapsed: boolean }) => (
   <div className="flex items-center gap-2 px-3 py-1">
     <Skeleton className="size-8 shrink-0 rounded-full" />

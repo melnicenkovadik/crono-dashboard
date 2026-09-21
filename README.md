@@ -31,7 +31,8 @@ The design is best judged at **1440 × 750**, the size of the Figma frame.
 - **Layout.** On desktop the whole page fits one screen and only the Signals list scrolls. Under
   ~700px of window height the page scrolls as a whole instead of clipping. Below 1280px the columns
   stack; below 768px the sidebar becomes a drawer. Above 1600px the content stops growing and centres.
-- **Collapsible sidebar** via the `«` button, state kept locally.
+- **Collapsible sidebar** via the `«` button, state kept locally. The right column has no collapse
+  control on purpose: the design draws none, and an invented handle would sit outside its language.
 - **Signals.** `Action` opens a menu with `Complete` and `Delete`, styled after the export's tooltip.
   Either one lowers the unread counter next to the title. `Complete` greys the row out and stays;
   `Delete` removes it. The menu closes on outside click, `Escape`, scroll and resize, and works from

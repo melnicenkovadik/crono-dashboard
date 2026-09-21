@@ -29,6 +29,7 @@ const Arrow = ({ flipped }: { flipped: boolean }) => (
 )
 
 const GAP_FROM_TRIGGER = 4
+const EDGE_MARGIN = 8
 
 export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, triggerRef }: ActionMenuProps) => {
   const menuId = useId()
@@ -37,6 +38,7 @@ export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, trigg
   const itemsRef = useRef<HTMLButtonElement[]>([])
   const skipRefocus = useRef(false)
   const [openUp, setOpenUp] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const close = useCallback(() => menuRef.current?.hidePopover(), [])
 
@@ -51,15 +53,19 @@ export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, trigg
       const { height, width } = menu.getBoundingClientRect()
       const flip = anchor.bottom + height + GAP_FROM_TRIGGER > window.innerHeight
       setOpenUp(flip)
-      menu.style.left = `${Math.max(8, anchor.left + anchor.width / 2 - width / 2)}px`
+      const centred = anchor.left + anchor.width / 2 - width / 2
+      // Keep both edges inside the viewport, left edge winning if it is too narrow for both.
+      menu.style.left = `${Math.max(EDGE_MARGIN, Math.min(centred, window.innerWidth - width - EDGE_MARGIN))}px`
       menu.style.top = flip
         ? `${anchor.top - height - GAP_FROM_TRIGGER}px`
         : `${anchor.bottom + GAP_FROM_TRIGGER}px`
     }
 
     const handleToggle = (event: Event) => {
-      const open = (event as ToggleEvent).newState === 'open'
-      if (open) {
+      const isOpen = (event as ToggleEvent).newState === 'open'
+      // Chrome does not expose the invoker's expanded state for popovertarget yet.
+      setOpen(isOpen)
+      if (isOpen) {
         place()
         itemsRef.current.find((item) => !item.disabled)?.focus()
         // The menu is anchored once, so anything that moves the row closes it.
@@ -117,6 +123,7 @@ export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, trigg
         }}
         popoverTarget={menuId}
         aria-haspopup="menu"
+        aria-expanded={open}
         aria-label={`Action for ${signalLabel}`}
       >
         Action
@@ -129,6 +136,10 @@ export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, trigg
         role="menu"
         aria-label={`Action for ${signalLabel}`}
         onKeyDown={onMenuKeyDown}
+        onBlur={(event) => {
+          // Tabbing out should dismiss it; light dismiss only covers pointer clicks.
+          if (!event.currentTarget.contains(event.relatedTarget)) close()
+        }}
         // `hidden` first: the UA's display:none for a closed popover loses to any author display rule.
         className="inset-auto m-0 hidden flex-col items-center bg-transparent p-0 backdrop:bg-transparent [&:popover-open]:flex"
       >
