@@ -38,7 +38,16 @@ export const NavItem = ({ entry, active, collapsed, count }: NavItemProps) => {
           active ? 'opacity-100' : 'opacity-0',
         )}
       />
-      <Icon className="size-6 shrink-0" />
+      <span className="relative flex shrink-0">
+        <Icon className="size-6" />
+        {/* Collapsed there is no room for the number, so it becomes a dot. */}
+        {collapsed && count !== undefined && (
+          <span
+            aria-label={`${count} unread`}
+            className="bg-secondary-yellow absolute -top-0.5 -right-0.5 size-2 rounded-full outline-2 outline-white"
+          />
+        )}
+      </span>
       {!collapsed && (
         <>
           <span className="text-s3 flex-1 truncate">{label}</span>
@@ -49,9 +58,6 @@ export const NavItem = ({ entry, active, collapsed, count }: NavItemProps) => {
             </span>
           )}
         </>
-      )}
-      {collapsed && count !== undefined && (
-        <Badge className="absolute top-0 right-2 h-4 px-1 text-[10px]">{count}</Badge>
       )}
     </a>
   )
