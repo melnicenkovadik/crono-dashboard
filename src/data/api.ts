@@ -10,18 +10,19 @@ export type ResourceKey = 'workspace' | 'replies' | 'tasks' | 'signals' | 'kpi' 
 
 const params = new URLSearchParams(window.location.search)
 
-/** `?delay=1500` slows every response down; `?fail=signals,kpi` (or `all`) breaks the first attempt. */
+/**
+ * `?delay=1500` slows every response down; `?fail=signals,kpi` (or `?fail=all`)
+ * keeps those requests failing, retries included, until the flag is dropped.
+ */
 const delayMs = Number(params.get('delay') ?? 450)
 const failing = new Set((params.get('fail') ?? '').split(',').filter(Boolean))
-const alreadyFailed = new Set<ResourceKey>()
 
-const shouldFail = (key: ResourceKey) => (failing.has(key) || failing.has('all')) && !alreadyFailed.has(key)
+const shouldFail = (key: ResourceKey) => failing.has(key) || failing.has('all')
 
 const respond = <T>(key: ResourceKey, payload: T): Promise<T> =>
   new Promise((resolve, reject) => {
     window.setTimeout(() => {
       if (shouldFail(key)) {
-        alreadyFailed.add(key)
         reject(new Error(`Could not load ${key}. Check your connection and try again.`))
         return
       }
