@@ -1,1 +1,3 @@
-export const App = () => <div className="min-h-dvh" />
+import { AppShell } from './components/layout/AppShell'
+
+export const App = () => <AppShell />
