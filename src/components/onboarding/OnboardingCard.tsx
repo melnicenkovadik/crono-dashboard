@@ -43,19 +43,12 @@ type OnboardingCardProps = {
   className?: string
 }
 
-export const OnboardingCard = ({
-  resource,
-  className,
-}: OnboardingCardProps) => (
+export const OnboardingCard = ({ resource, className }: OnboardingCardProps) => (
   <Card className={cx('flex flex-col px-2 pt-2', className)}>
     <h2 className="text-h5 text-dark px-2 pt-2">Onboarding</h2>
 
     {resource.status === 'error' ? (
-      <BlockError
-        message={resource.message}
-        onRetry={resource.retry}
-        className="mt-3"
-      />
+      <BlockError message={resource.message} onRetry={resource.retry} className="mt-3" />
     ) : (
       <ul className="short:gap-3 mt-3 flex flex-col gap-4 px-2">
         {resource.status === 'loading'

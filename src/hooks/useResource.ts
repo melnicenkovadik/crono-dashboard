@@ -5,7 +5,8 @@ export type Resource<T> =
   | { status: 'error'; message: string; retry: () => void }
   | { status: 'ready'; data: T }
 
-type LoadedState<T> = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; data: T }
+type LoadedState<T> =
+  { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; data: T }
 
 const messageOf = (error: unknown) =>
   error instanceof Error ? error.message : 'Something went wrong while loading this block.'
@@ -14,7 +15,7 @@ const messageOf = (error: unknown) =>
  * Runs `load` on mount and on every retry. `load` has to be a stable reference —
  * the api module exports plain functions, so passing `api.getSignals` is enough.
  */
-export const useResource = <T,>(load: () => Promise<T>): Resource<T> => {
+export const useResource = <T>(load: () => Promise<T>): Resource<T> => {
   const [attempt, setAttempt] = useState(0)
   const [state, setState] = useState<LoadedState<T>>({ status: 'loading' })
 

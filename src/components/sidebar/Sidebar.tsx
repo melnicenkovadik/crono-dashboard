@@ -60,18 +60,9 @@ export const Sidebar = ({ workspace, collapsed, onToggle }: SidebarProps) => {
             collapsed ? 'flex-col gap-3 px-4' : 'justify-between pr-2 pl-4',
           )}
         >
-          <a
-            href="#"
-            aria-label="Crono"
-            className="flex h-7 items-center overflow-hidden"
-          >
+          <a href="#" aria-label="Crono" className="flex h-7 items-center overflow-hidden">
             {collapsed ? (
-              <CronoLogo
-                viewBox="0 0 22 29"
-                width={22}
-                height={29}
-                className="h-7 w-[22px]"
-              />
+              <CronoLogo viewBox="0 0 22 29" width={22} height={29} className="h-7 w-[22px]" />
             ) : (
               <CronoLogo className="h-[29px] w-[98px]" />
             )}
@@ -83,12 +74,7 @@ export const Sidebar = ({ workspace, collapsed, onToggle }: SidebarProps) => {
             aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
             className="bg-gray-7 text-gray-1 hover:text-gray-hover-1 flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-xl"
           >
-            <CollapseIcon
-              className={cx(
-                'size-4 transition-transform',
-                collapsed && 'rotate-180',
-              )}
-            />
+            <CollapseIcon className={cx('size-4 transition-transform', collapsed && 'rotate-180')} />
           </button>
         </div>
 
@@ -120,11 +106,7 @@ export const Sidebar = ({ workspace, collapsed, onToggle }: SidebarProps) => {
       <div className="flex flex-col gap-2 pb-3">
         <hr className="border-gray-4 border-t" />
         {data ? (
-          <ProfileCard
-            name={data.profile.name}
-            role={data.profile.role}
-            collapsed={collapsed}
-          />
+          <ProfileCard name={data.profile.name} role={data.profile.role} collapsed={collapsed} />
         ) : (
           <ProfileCardSkeleton collapsed={collapsed} />
         )}

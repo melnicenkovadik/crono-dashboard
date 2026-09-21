@@ -25,17 +25,10 @@ export const TaskTile = ({ bucket }: { bucket: TaskBucket }) => {
   const tone = tones[bucket.id]
 
   return (
-    <div
-      className={cx(
-        'rounded-tile relative flex flex-1 flex-col justify-between p-4',
-        tone.surface,
-      )}
-    >
+    <div className={cx('rounded-tile relative flex flex-1 flex-col justify-between p-4', tone.surface)}>
       <span className={cx('text-metric', tone.value)}>{bucket.count}</span>
       <div className="flex items-center">
-        <span className="text-tile text-gray-hover-1 flex-1">
-          {bucket.label}
-        </span>
+        <span className="text-tile text-gray-hover-1 flex-1">{bucket.label}</span>
         {bucket.href && (
           <a
             href={bucket.href}
@@ -46,9 +39,7 @@ export const TaskTile = ({ bucket }: { bucket: TaskBucket }) => {
           </a>
         )}
       </div>
-      {bucket.errorCount !== undefined && (
-        <ErrorChip count={bucket.errorCount} />
-      )}
+      {bucket.errorCount !== undefined && <ErrorChip count={bucket.errorCount} />}
     </div>
   )
 }

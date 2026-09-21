@@ -21,8 +21,7 @@ export const AppShell = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
 
-  const periodLabel =
-    workspace.status === 'ready' ? workspace.data.periodLabel : null
+  const periodLabel = workspace.status === 'ready' ? workspace.data.periodLabel : null
 
   return (
     // Below 700px tall the desktop layout stops fitting, so the page scrolls instead.
@@ -44,11 +43,7 @@ export const AppShell = () => {
             className="absolute inset-0 bg-black/30"
           />
           <div className="relative h-full">
-            <Sidebar
-              workspace={workspace}
-              collapsed={false}
-              onToggle={() => setNavOpen(false)}
-            />
+            <Sidebar workspace={workspace} collapsed={false} onToggle={() => setNavOpen(false)} />
           </div>
         </div>
       )}
@@ -69,18 +64,9 @@ export const AppShell = () => {
         <main className="flex min-w-0 flex-1 flex-col p-4 xl:min-h-0">
           {/* Row heights come from the mockup; row 3 takes whatever is left. */}
           <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-2 xl:grid xl:min-h-0 xl:flex-1 xl:grid-cols-[1fr_1fr_var(--spacing-aside)] xl:grid-rows-[142px_148px_minmax(0,1fr)]">
-            <WelcomeCard
-              resource={workspace}
-              className="xl:col-start-1 xl:row-start-1"
-            />
-            <RepliesCard
-              resource={replies}
-              className="xl:col-start-2 xl:row-start-1"
-            />
-            <TodaysTasksCard
-              resource={taskBuckets}
-              className="xl:col-span-2 xl:col-start-1 xl:row-start-2"
-            />
+            <WelcomeCard resource={workspace} className="xl:col-start-1 xl:row-start-1" />
+            <RepliesCard resource={replies} className="xl:col-start-2 xl:row-start-1" />
+            <TodaysTasksCard resource={taskBuckets} className="xl:col-span-2 xl:col-start-1 xl:row-start-2" />
 
             <PerformanceCard
               resource={kpiMetrics}
@@ -93,10 +79,7 @@ export const AppShell = () => {
               className="xl:col-span-2 xl:col-start-1 xl:row-start-3 xl:min-h-0"
             />
 
-            <OnboardingCard
-              resource={onboarding}
-              className="xl:col-start-3 xl:row-start-3"
-            />
+            <OnboardingCard resource={onboarding} className="xl:col-start-3 xl:row-start-3" />
           </div>
         </main>
       </div>

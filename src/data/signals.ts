@@ -88,7 +88,10 @@ export const signals: Signal[] = [
     id: 'sig-7',
     avatarSrc: null,
     avatarName: 'Marco Bianchi',
-    headline: [{ text: 'Marco Bianchi', style: 'strong' }, ...roleChange('SDR Manager', 'Head of Sales', 'Scalapay')],
+    headline: [
+      { text: 'Marco Bianchi', style: 'strong' },
+      ...roleChange('SDR Manager', 'Head of Sales', 'Scalapay'),
+    ],
     kind: 'company-change',
     inSequence: false,
     date: '2025-04-01',

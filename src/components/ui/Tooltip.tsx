@@ -6,14 +6,7 @@ type TooltipProps = {
 }
 
 const Arrow = () => (
-  <svg
-    width="10"
-    height="4"
-    viewBox="0 0 10 4"
-    fill="none"
-    aria-hidden="true"
-    focusable="false"
-  >
+  <svg width="10" height="4" viewBox="0 0 10 4" fill="none" aria-hidden="true" focusable="false">
     <path
       d="M4.24742 0.860086C4.64584 0.404759 5.35417 0.40476 5.75258 0.860087L8.5 4L1.5 4L4.24742 0.860086Z"
       fill="currentColor"
@@ -27,11 +20,7 @@ export const Tooltip = ({ text, children }: TooltipProps) => {
 
   return (
     <span className="relative inline-flex">
-      <span
-        className="peer inline-flex rounded-full"
-        tabIndex={0}
-        aria-describedby={id}
-      >
+      <span className="peer inline-flex rounded-full" tabIndex={0} aria-describedby={id}>
         {children}
       </span>
       <span

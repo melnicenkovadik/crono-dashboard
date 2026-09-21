@@ -51,9 +51,7 @@ export const NavItem = ({ entry, active, collapsed, count }: NavItemProps) => {
         </>
       )}
       {collapsed && count !== undefined && (
-        <Badge className="absolute top-0 right-2 h-4 px-1 text-[10px]">
-          {count}
-        </Badge>
+        <Badge className="absolute top-0 right-2 h-4 px-1 text-[10px]">{count}</Badge>
       )}
     </a>
   )

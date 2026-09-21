@@ -27,7 +27,10 @@ export type TaskBucket = {
 export type SignalKind = 'role-change' | 'company-change' | 'website-view'
 
 /** The headline mixes three text styles, so it travels as segments rather than a string. */
-export type SignalSegment = { text: string; style: 'strong' | 'plain' | 'highlight' }
+export type SignalSegment = {
+  text: string
+  style: 'strong' | 'plain' | 'highlight'
+}
 
 export type Signal = {
   id: string
@@ -52,12 +55,7 @@ export type KpiMetric = {
   tooltip?: string
 }
 
-export type OnboardingStepId =
-  | 'integrations'
-  | 'contact'
-  | 'sequence'
-  | 'contacts-to-sequence'
-  | 'first-task'
+export type OnboardingStepId = 'integrations' | 'contact' | 'sequence' | 'contacts-to-sequence' | 'first-task'
 
 export type OnboardingStep = {
   id: OnboardingStepId

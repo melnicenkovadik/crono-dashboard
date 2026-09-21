@@ -16,10 +16,7 @@ const Portrait = () => (
 
 export const ProfileCard = ({ name, role, collapsed }: ProfileCardProps) => (
   <div
-    className={cx(
-      'flex items-center gap-2 rounded-[29px] py-1',
-      collapsed ? 'justify-center px-3' : 'px-3',
-    )}
+    className={cx('flex items-center gap-2 rounded-[29px] py-1', collapsed ? 'justify-center px-3' : 'px-3')}
   >
     <Portrait />
     {!collapsed && (

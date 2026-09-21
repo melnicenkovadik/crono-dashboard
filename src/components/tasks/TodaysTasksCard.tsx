@@ -10,9 +10,7 @@ import { TaskTile } from './TaskTile'
 /** The mockup separates buckets 1|2 and 3|4 but leaves 2|3 open — reproduced as drawn. */
 const DIVIDER_AFTER = new Set(['overdue', 'pending-auto'])
 
-const Divider = () => (
-  <span aria-hidden="true" className="bg-gray-4 w-px self-stretch" />
-)
+const Divider = () => <span aria-hidden="true" className="bg-gray-4 w-px self-stretch" />
 
 const TaskRow = ({ buckets }: { buckets: TaskBucket[] }) => (
   <div className="flex h-[86px] items-stretch gap-2">
@@ -30,10 +28,7 @@ type TodaysTasksCardProps = {
   className?: string
 }
 
-export const TodaysTasksCard = ({
-  resource,
-  className,
-}: TodaysTasksCardProps) => (
+export const TodaysTasksCard = ({ resource, className }: TodaysTasksCardProps) => (
   <Card className={cx('flex flex-col gap-2 p-4', className)}>
     <h2 className="text-h5 text-dark">Today’s tasks</h2>
 
@@ -45,11 +40,7 @@ export const TodaysTasksCard = ({
       </div>
     )}
     {resource.status === 'error' && (
-      <BlockError
-        message={resource.message}
-        onRetry={resource.retry}
-        className="h-[86px]"
-      />
+      <BlockError message={resource.message} onRetry={resource.retry} className="h-[86px]" />
     )}
     {resource.status === 'ready' && <TaskRow buckets={resource.data} />}
   </Card>

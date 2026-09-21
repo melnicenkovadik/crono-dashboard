@@ -15,8 +15,7 @@ const delayMs = Number(params.get('delay') ?? 450)
 const failing = new Set((params.get('fail') ?? '').split(',').filter(Boolean))
 const alreadyFailed = new Set<ResourceKey>()
 
-const shouldFail = (key: ResourceKey) =>
-  (failing.has(key) || failing.has('all')) && !alreadyFailed.has(key)
+const shouldFail = (key: ResourceKey) => (failing.has(key) || failing.has('all')) && !alreadyFailed.has(key)
 
 const respond = <T>(key: ResourceKey, payload: T): Promise<T> =>
   new Promise((resolve, reject) => {

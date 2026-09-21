@@ -81,13 +81,7 @@ export const DashboardIcon = (props: SVGProps<SVGSVGElement>) => (
     focusable="false"
     {...props}
   >
-    <path
-      d="M21 9H3"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M21 9H3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M8.62012 9V21"
       stroke="currentColor"
@@ -146,13 +140,7 @@ export const ListsIcon = (props: SVGProps<SVGSVGElement>) => (
     focusable="false"
     {...props}
   >
-    <path
-      d="M21 9H3"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M21 9H3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M8.62012 9V21"
       stroke="currentColor"
@@ -200,22 +188,10 @@ export const TemplatesIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </g>
     <g transform="translate(16, 15)">
-      <path
-        d="M1 0V4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M1 0V4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </g>
     <g transform="translate(15, 16)">
-      <path
-        d="M4 1H0"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M4 1H0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </g>
   </svg>
 )
@@ -245,13 +221,7 @@ export const SequencesIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M4 17V20"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M4 17V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M9.2998 13.6016V20.0016"
       stroke="currentColor"
@@ -336,13 +306,7 @@ export const TasksIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M11 5H21"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M11 5H21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M3.01953 4.508L4.67253 5.996L7.99953 3"
       stroke="currentColor"
@@ -385,13 +349,7 @@ export const InboxIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M6 12H7"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M6 12H7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -401,13 +359,7 @@ export const InboxIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M14 5V12"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M14 5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <rect
       x="14"
       y="2"
@@ -978,13 +930,7 @@ export const MailboxIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M6 12H7"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M6 12H7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -994,13 +940,7 @@ export const MailboxIcon = (props: SVGProps<SVGSVGElement>) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M14 5V12"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M14 5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <rect
       x="14"
       y="2"

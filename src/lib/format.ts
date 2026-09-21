@@ -8,8 +8,7 @@ const signalDate = new Intl.DateTimeFormat('en-US', {
   timeZone: 'UTC',
 })
 
-export const formatSignalDate = (isoDate: string) =>
-  signalDate.format(new Date(`${isoDate}T00:00:00Z`))
+export const formatSignalDate = (isoDate: string) => signalDate.format(new Date(`${isoDate}T00:00:00Z`))
 
 export const formatKpiValue = ({ value, format }: KpiMetric) =>
   format === 'euro-k' ? `€${value / 1000}K` : String(value)

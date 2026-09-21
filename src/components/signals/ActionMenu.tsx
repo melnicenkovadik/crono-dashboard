@@ -1,11 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type KeyboardEvent,
-} from 'react'
+import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import { cx } from '../../lib/cx'
 import { Button } from '../ui/Button'
 
@@ -37,13 +30,7 @@ const Arrow = ({ flipped }: { flipped: boolean }) => (
 
 const GAP_FROM_TRIGGER = 4
 
-export const ActionMenu = ({
-  signalLabel,
-  completed,
-  onComplete,
-  onDelete,
-  triggerRef,
-}: ActionMenuProps) => {
+export const ActionMenu = ({ signalLabel, completed, onComplete, onDelete, triggerRef }: ActionMenuProps) => {
   const menuId = useId()
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -62,8 +49,7 @@ export const ActionMenu = ({
       if (!trigger) return
       const anchor = trigger.getBoundingClientRect()
       const { height, width } = menu.getBoundingClientRect()
-      const flip =
-        anchor.bottom + height + GAP_FROM_TRIGGER > window.innerHeight
+      const flip = anchor.bottom + height + GAP_FROM_TRIGGER > window.innerHeight
       setOpenUp(flip)
       menu.style.left = `${Math.max(8, anchor.left + anchor.width / 2 - width / 2)}px`
       menu.style.top = flip
@@ -117,10 +103,9 @@ export const ActionMenu = ({
     action()
   }
 
-  const registerItem =
-    (index: number) => (element: HTMLButtonElement | null) => {
-      if (element) itemsRef.current[index] = element
-    }
+  const registerItem = (index: number) => (element: HTMLButtonElement | null) => {
+    if (element) itemsRef.current[index] = element
+  }
 
   return (
     <>

@@ -7,12 +7,7 @@ import { BlockError } from '../ui/BlockError'
 import { Card } from '../ui/Card'
 import { Skeleton } from '../ui/Skeleton'
 import { SignalRow } from './SignalRow'
-import {
-  initialSignalsState,
-  signalsReducer,
-  unreadCount,
-  visibleSignals,
-} from './signalsReducer'
+import { initialSignalsState, signalsReducer, unreadCount, visibleSignals } from './signalsReducer'
 
 const DESCRIPTION =
   'Never miss a single opportunity: check out your top signals from your 1st-degree LinkedIn connections.'
@@ -39,8 +34,7 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
   const emptyRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
-    if (resource.status === 'ready')
-      dispatch({ type: 'loaded', items: resource.data })
+    if (resource.status === 'ready') dispatch({ type: 'loaded', items: resource.data })
   }, [resource])
 
   const visible = visibleSignals(state)
@@ -63,22 +57,17 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
     [state],
   )
 
-  const registerTrigger =
-    (id: string) => (element: HTMLButtonElement | null) => {
-      if (element) triggers.current.set(id, element)
-      else triggers.current.delete(id)
-    }
+  const registerTrigger = (id: string) => (element: HTMLButtonElement | null) => {
+    if (element) triggers.current.set(id, element)
+    else triggers.current.delete(id)
+  }
 
   return (
     <Card className={cx('flex flex-col gap-3 pt-4 pr-[4px]', className)}>
       <header className="flex flex-col gap-1 px-4">
         <div className="flex items-center gap-1.5">
           <h2 className="text-h5 text-dark">Signals</h2>
-          <Badge
-            size="section"
-            aria-live="polite"
-            aria-label={`${count} unread signals`}
-          >
+          <Badge size="section" aria-live="polite" aria-label={`${count} unread signals`}>
             {count}
           </Badge>
         </div>
@@ -86,11 +75,7 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
       </header>
 
       {resource.status === 'error' ? (
-        <BlockError
-          message={resource.message}
-          onRetry={resource.retry}
-          className="flex-1"
-        />
+        <BlockError message={resource.message} onRetry={resource.retry} className="flex-1" />
       ) : (
         <div className="scrollbar-signals min-h-0 flex-1 xl:overflow-y-auto">
           <ul className="flex flex-col gap-4 pb-4">
@@ -109,9 +94,7 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
                   <SignalRow
                     signal={signal}
                     completed={state.completed.has(signal.id)}
-                    onComplete={() =>
-                      dispatch({ type: 'complete', id: signal.id })
-                    }
+                    onComplete={() => dispatch({ type: 'complete', id: signal.id })}
                     onDelete={() => handleDelete(signal.id)}
                     triggerRef={registerTrigger(signal.id)}
                   />
@@ -120,11 +103,7 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
           </ul>
 
           {resource.status === 'ready' && visible.length === 0 && (
-            <p
-              ref={emptyRef}
-              tabIndex={-1}
-              className="text-b2 text-gray-1 px-4 py-10 text-center"
-            >
+            <p ref={emptyRef} tabIndex={-1} className="text-b2 text-gray-1 px-4 py-10 text-center">
               You’re all caught up — no signals left.
             </p>
           )}

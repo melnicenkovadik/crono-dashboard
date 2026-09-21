@@ -7,12 +7,7 @@ type ProgressBarProps = {
   fillClassName: string
 }
 
-export const ProgressBar = ({
-  percent,
-  label,
-  trackClassName,
-  fillClassName,
-}: ProgressBarProps) => (
+export const ProgressBar = ({ percent, label, trackClassName, fillClassName }: ProgressBarProps) => (
   <div
     role="progressbar"
     aria-label={label}
@@ -21,9 +16,6 @@ export const ProgressBar = ({
     aria-valuemax={100}
     className={cx('h-[3px] overflow-hidden rounded-[3px]', trackClassName)}
   >
-    <div
-      className={cx('h-full rounded-[3px]', fillClassName)}
-      style={{ width: `${percent}%` }}
-    />
+    <div className={cx('h-full rounded-[3px]', fillClassName)} style={{ width: `${percent}%` }} />
   </div>
 )

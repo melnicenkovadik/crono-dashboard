@@ -7,9 +7,7 @@ export type SignalsState = {
 }
 
 export type SignalsAction =
-  | { type: 'loaded'; items: Signal[] }
-  | { type: 'complete'; id: string }
-  | { type: 'delete'; id: string }
+  { type: 'loaded'; items: Signal[] } | { type: 'complete'; id: string } | { type: 'delete'; id: string }
 
 export const initialSignalsState: SignalsState = {
   items: [],
@@ -23,16 +21,12 @@ const withAdded = (set: ReadonlySet<string>, id: string) => new Set(set).add(id)
  * Server rows and what the session did to them are kept apart, so reloading the
  * list never resurrects a row the user has already handled.
  */
-export const signalsReducer = (
-  state: SignalsState,
-  action: SignalsAction,
-): SignalsState => {
+export const signalsReducer = (state: SignalsState, action: SignalsAction): SignalsState => {
   switch (action.type) {
     case 'loaded':
       return { ...state, items: action.items }
     case 'complete':
-      if (state.completed.has(action.id) || state.deleted.has(action.id))
-        return state
+      if (state.completed.has(action.id) || state.deleted.has(action.id)) return state
       return { ...state, completed: withAdded(state.completed, action.id) }
     case 'delete':
       if (state.deleted.has(action.id)) return state
@@ -45,6 +39,4 @@ export const visibleSignals = (state: SignalsState) =>
 
 /** Derived, never stored: it cannot drift below zero or drop twice for one signal. */
 export const unreadCount = (state: SignalsState) =>
-  visibleSignals(state).filter(
-    (signal) => signal.unread && !state.completed.has(signal.id),
-  ).length
+  visibleSignals(state).filter((signal) => signal.unread && !state.completed.has(signal.id)).length

@@ -3,14 +3,7 @@ import type { KpiId, KpiMetric } from '../../data/types'
 import { cx } from '../../lib/cx'
 import { formatKpiTarget, formatKpiValue } from '../../lib/format'
 import { progressPercent } from '../../lib/progress'
-import {
-  ActivitiesIcon,
-  CompaniesIcon,
-  ContactsIcon,
-  DealsKpiIcon,
-  InfoIcon,
-  MeetingsIcon,
-} from '../icons'
+import { ActivitiesIcon, CompaniesIcon, ContactsIcon, DealsKpiIcon, InfoIcon, MeetingsIcon } from '../icons'
 import { ProgressBar } from '../ui/ProgressBar'
 import { Tooltip } from '../ui/Tooltip'
 
@@ -85,9 +78,7 @@ export const KpiCard = ({ metric }: { metric: KpiMetric }) => {
     // mockup puts that pixel between the label and the number, so mt-auto does it.
     <div className="inset-ring-gray-4 flex h-full flex-col rounded-lg p-2 inset-ring">
       <div className="flex h-4 items-center justify-between">
-        <span className="text-b3 text-gray-hover-1 truncate">
-          {metric.label}
-        </span>
+        <span className="text-b3 text-gray-hover-1 truncate">{metric.label}</span>
         {metric.tooltip && (
           <Tooltip text={metric.tooltip}>
             <InfoIcon className="text-gray-1 size-4" />
@@ -97,9 +88,7 @@ export const KpiCard = ({ metric }: { metric: KpiMetric }) => {
 
       <p className="mt-auto flex items-center gap-px">
         {Icon && <Icon className={cx('size-4 shrink-0', style.icon)} />}
-        <span className={cx('text-kpi', style.value, style.valueBox)}>
-          {formatKpiValue(metric)}
-        </span>
+        <span className={cx('text-kpi', style.value, style.valueBox)}>{formatKpiValue(metric)}</span>
         <span className="text-kpi text-gray-2">{formatKpiTarget(metric)}</span>
       </p>
 
