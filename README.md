@@ -89,11 +89,21 @@ Reproduced as drawn, because they are the design's decisions, not accidents to t
 - The Signals counter says 12 with five rows drawn, so the fixture has 12 signals — the counter is
   data, not the length of what fits on screen.
 
-One thing is **not** reproduced. Every filled KPI bar in the design is drawn at the same width
-(88 of 166px) whatever its numbers say — including `Companies engaged`, which reads `0/500` under a
-half-filled bar. Bar width here is always `value / target`, clamped to 0–100% and guarded against a
-zero target, and the two "engaged" counters carry real numbers instead of the design's zeros. A
-half-filled bar over a zero would read as a bug in the code rather than a quirk of the mockup.
+### The one place this deliberately departs from the design
+
+Every filled KPI bar in the design is drawn at exactly the same width — 88 of 166px, 53% — whatever
+its numbers say: `1000/2000` (50%), `20/30` (67%), `100/200` (50%) and `€50K/100K` (50%) all get the
+same bar. `Companies engaged` gets it too, over the number `0/500`.
+
+Reproducing that faithfully would mean shipping a progress bar whose width ignores its own inputs,
+and a card that shows a half-filled bar above a zero. Both read as a defect in the component rather
+than a quirk of the mockup, and the first one breaks the moment real data arrives.
+
+So bar width is one formula — `value / target`, clamped to 0–100%, guarded against a zero or missing
+target, in `src/lib/progress.ts` and covered by tests — used by all six cards. With the design's own
+numbers that leaves two bars empty, so the two "engaged" counters carry plausible figures (342/500
+and 264/500) instead of its zeros. Everything else on the card, including every target and every
+label, is the design's.
 
 ## Layout checks
 
