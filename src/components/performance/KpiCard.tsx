@@ -12,12 +12,6 @@ type KpiStyle = {
   /** Two icons are drawn a shade lighter than their number — kept as in the export. */
   icon: string
   value: string
-  /**
-   * Figma sized each number box by hand, so four of the six numbers sit
-   * right-aligned in a box wider than the digits. Kept as a minimum width so a
-   * longer number grows instead of overlapping its target.
-   */
-  valueBox?: string
   track: string
   fill: string
 }
@@ -34,7 +28,6 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: CompaniesIcon,
     icon: 'text-blue',
     value: 'text-blue',
-    valueBox: 'min-w-[14px] text-right',
     track: 'bg-blue-green-light',
     fill: 'bg-blue',
   },
@@ -42,7 +35,6 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: ActivitiesIcon,
     icon: 'text-icon-purple',
     value: 'text-purple',
-    valueBox: 'min-w-10 text-right',
     track: 'bg-purple-light',
     fill: 'bg-purple',
   },
@@ -50,7 +42,6 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: MeetingsIcon,
     icon: 'text-yellow',
     value: 'text-yellow',
-    valueBox: 'min-w-6 text-right',
     track: 'bg-yellow-light',
     fill: 'bg-yellow',
   },
@@ -58,7 +49,6 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: DealsKpiIcon,
     icon: 'text-icon-pink',
     value: 'text-pink',
-    valueBox: 'min-w-[30px] text-right',
     track: 'bg-pink-light',
     fill: 'bg-pink',
   },
@@ -87,9 +77,11 @@ export const KpiCard = ({ metric }: { metric: KpiMetric }) => {
         )}
       </div>
 
+      {/* The export leaves 3-6px after the icon through hand-sized text boxes; a fixed
+          gap keeps that spacing whatever the number turns out to be. */}
       <p className="mt-auto flex items-center gap-px">
-        {Icon && <Icon className={cx('size-4 shrink-0', style.icon)} />}
-        <span className={cx('text-kpi', style.value, style.valueBox)}>{formatKpiValue(metric)}</span>
+        {Icon && <Icon className={cx('mr-[5px] size-4 shrink-0', style.icon)} />}
+        <span className={cx('text-kpi', style.value)}>{formatKpiValue(metric)}</span>
         <span className="text-kpi text-gray-2">{formatKpiTarget(metric)}</span>
       </p>
 

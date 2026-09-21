@@ -83,8 +83,9 @@ Reproduced as drawn, because they are the design's decisions, not accidents to t
 - Task tiles have a 12.21px corner radius.
 - Dividers sit between tiles 1|2 and 3|4 of `Today's tasks`, but not between 2|3.
 - Four of the six KPI numbers sit right-aligned in a hand-sized text box, leaving 3–6px after the
-  icon; the other two sit flush. Kept, but as a _minimum_ width, so a longer number grows instead of
-  colliding with its target.
+  icon; the other two sit flush. Those widths were measured around the numbers the design happened to
+  show, so they are replaced by one fixed 6px gap — the spacing the majority of the cards have, and
+  the only version that survives a number of a different length.
 - The `Action` button is `#1EBAB2` while the rest of the accent colour in the design is `#0A9B94`.
 - The Signals counter says 12 with five rows drawn, so the fixture has 12 signals — the counter is
   data, not the length of what fits on screen.
