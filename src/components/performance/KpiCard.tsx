@@ -14,7 +14,8 @@ type KpiStyle = {
   value: string
   /**
    * Figma sized each number box by hand, so four of the six numbers sit
-   * right-aligned in a box wider than the digits. Reproduced as drawn.
+   * right-aligned in a box wider than the digits. Kept as a minimum width so a
+   * longer number grows instead of overlapping its target.
    */
   valueBox?: string
   track: string
@@ -33,7 +34,7 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: CompaniesIcon,
     icon: 'text-blue',
     value: 'text-blue',
-    valueBox: 'w-[14px] text-right',
+    valueBox: 'min-w-[14px] text-right',
     track: 'bg-blue-green-light',
     fill: 'bg-blue',
   },
@@ -41,7 +42,7 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: ActivitiesIcon,
     icon: 'text-icon-purple',
     value: 'text-purple',
-    valueBox: 'w-10 text-right',
+    valueBox: 'min-w-10 text-right',
     track: 'bg-purple-light',
     fill: 'bg-purple',
   },
@@ -49,7 +50,7 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: MeetingsIcon,
     icon: 'text-yellow',
     value: 'text-yellow',
-    valueBox: 'w-6 text-right',
+    valueBox: 'min-w-6 text-right',
     track: 'bg-yellow-light',
     fill: 'bg-yellow',
   },
@@ -57,7 +58,7 @@ const styles: Record<KpiId, KpiStyle> = {
     Icon: DealsKpiIcon,
     icon: 'text-icon-pink',
     value: 'text-pink',
-    valueBox: 'w-[30px] text-right',
+    valueBox: 'min-w-[30px] text-right',
     track: 'bg-pink-light',
     fill: 'bg-pink',
   },

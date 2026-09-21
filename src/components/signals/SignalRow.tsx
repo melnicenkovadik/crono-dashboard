@@ -24,7 +24,7 @@ export const SignalRow = ({ signal, completed, onComplete, onDelete, triggerRef 
 
   return (
     // pr-2 rather than pr-4: the mockup's drawn scrollbar overlays the row, a real one takes 8px.
-    <li className="flex items-center gap-12 pr-2 pl-4">
+    <li className="flex flex-col gap-2 pr-2 pl-4 sm:flex-row sm:items-center sm:gap-4 xl:gap-12">
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <span className="relative shrink-0">
           <Avatar src={signal.avatarSrc} name={signal.avatarName} className={cx(completed && 'opacity-60')} />
@@ -61,7 +61,7 @@ export const SignalRow = ({ signal, completed, onComplete, onDelete, triggerRef 
         </div>
       </div>
 
-      <div className="flex shrink-0 items-center gap-4">
+      <div className="flex shrink-0 items-center gap-4 self-end sm:self-auto">
         <span className="text-b5 text-gray-1">{formatSignalDate(signal.date)}</span>
         <ActionMenu
           signalLabel={plainHeadline}

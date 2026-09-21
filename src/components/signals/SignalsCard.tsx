@@ -13,7 +13,7 @@ const DESCRIPTION =
   'Never miss a single opportunity: check out your top signals from your 1st-degree LinkedIn connections.'
 
 const RowSkeleton = () => (
-  <li className="flex h-10 items-center gap-4 pr-2 pl-4">
+  <li className="flex min-h-10 items-center gap-4 pr-2 pl-4">
     <Skeleton className="size-8 shrink-0 rounded-full" />
     <div className="flex flex-1 flex-col gap-1">
       <Skeleton className="h-4 w-2/3" />
@@ -65,11 +65,15 @@ export const SignalsCard = ({ resource, className }: SignalsCardProps) => {
   return (
     <Card className={cx('flex flex-col gap-3 pt-4 pr-[4px]', className)}>
       <header className="flex flex-col gap-1 px-4">
-        <div className="flex items-center gap-1.5">
+        <div className="flex h-6 items-center gap-1.5">
           <h2 className="text-h5 text-dark">Signals</h2>
-          <Badge size="section" aria-live="polite" aria-label={`${count} unread signals`}>
-            {count}
-          </Badge>
+          {resource.status === 'ready' ? (
+            <Badge size="section" aria-live="polite" aria-label={`${count} unread signals`}>
+              {count}
+            </Badge>
+          ) : (
+            <Skeleton className="h-6 w-7 rounded-xl" />
+          )}
         </div>
         <p className="text-b2 text-gray-1">{DESCRIPTION}</p>
       </header>

@@ -10,10 +10,10 @@ import { TaskTile } from './TaskTile'
 /** The mockup separates buckets 1|2 and 3|4 but leaves 2|3 open — reproduced as drawn. */
 const DIVIDER_AFTER = new Set(['overdue', 'pending-auto'])
 
-const Divider = () => <span aria-hidden="true" className="bg-gray-4 w-px self-stretch" />
+const Divider = () => <span aria-hidden="true" className="bg-gray-4 hidden w-px self-stretch sm:block" />
 
 const TaskRow = ({ buckets }: { buckets: TaskBucket[] }) => (
-  <div className="flex h-[86px] items-stretch gap-2">
+  <div className="grid min-h-[86px] grid-cols-2 gap-2 sm:flex sm:items-stretch">
     {buckets.map((bucket) => (
       <Fragment key={bucket.id}>
         <TaskTile bucket={bucket} />
@@ -33,7 +33,7 @@ export const TodaysTasksCard = ({ resource, className }: TodaysTasksCardProps) =
     <h2 className="text-h5 text-dark">Today’s tasks</h2>
 
     {resource.status === 'loading' && (
-      <div className="flex h-[86px] gap-2">
+      <div className="grid min-h-[86px] grid-cols-2 gap-2 sm:flex">
         {[0, 1, 2, 3].map((index) => (
           <Skeleton key={index} className="rounded-tile h-full flex-1" />
         ))}
