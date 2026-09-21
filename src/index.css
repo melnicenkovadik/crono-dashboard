@@ -118,8 +118,31 @@
   --spacing-aside: 408px;
 }
 
-/* Breakpoint for short desktop windows: below it the page scrolls as a whole. */
+/* Desktop windows too short for the mockup's spacing get a tighter onboarding list. */
 @custom-variant short (@media (min-width: 1280px) and (height < 748px));
+
+/* The mockup draws its own 8px scrollbar instead of the platform one. */
+@utility scrollbar-signals {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-4);
+    border-radius: 4px;
+  }
+
+  /* Firefox has no ::-webkit-scrollbar; setting scrollbar-width alongside it
+     would make Chrome ignore the 8px rule above. */
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-4) transparent;
+  }
+}
 
 @layer base {
   body {
